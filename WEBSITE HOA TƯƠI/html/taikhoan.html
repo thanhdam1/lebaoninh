@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tài khoản của tôi | Hoa Tươi Sài Gòn</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/128/449/449350.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+  <style>
+    :root{
+      --primary:#2a8c66;
+      --primary-600:#237659;
+      --primary-700:#1d614a;
+      --bg:#f5fbf8;
+      --text:#203128;
+      --muted:#60756b;
+      --ring:rgba(42,140,102,.25);
+      --card:#fff;
+      --border:#e6efe9;
+      --shadow:0 10px 20px rgba(0,0,0,.06),0 6px 6px rgba(0,0,0,.04);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:linear-gradient(135deg,var(--bg),#eef8f3);
+      color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;
+    }
+
+    /* Topbar (đơn giản – có thể thay bằng header của bạn) */
+    .topbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--border)}
+    .topbar .container{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--primary-700)}
+    .brand-name{font-family:"Playfair Display",serif;font-weight:700}
+    .btn-login, .user-chip{padding:8px 10px;border-radius:999px;border:1px solid var(--border);background:#f7fbf9}
+
+    /* Page layout */
+    .page{max-width:1100px;margin:24px auto;padding:0 16px}
+    .grid{display:grid;grid-template-columns: 320px 1fr;gap:22px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+
+    /* Left: profile card */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
+    .profile{padding:20px;text-align:center}
+    .avatar{
+      width:120px;height:120px;border-radius:50%;object-fit:cover;display:block;margin:10px auto;border:4px solid #eaf6f1
+    }
+    .upload{display:flex;gap:8px;justify-content:center;margin-top:10px}
+    .upload label{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px dashed var(--primary);border-radius:12px;color:var(--primary);cursor:pointer;background:#f2faf6}
+    .upload input{display:none}
+    .meta{color:var(--muted);font-size:14px;margin-top:6px}
+    .quick{padding:14px;border-top:1px dashed var(--border);display:grid;gap:8px}
+    .btn-ghost, .btn-danger{
+      width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#f9fdfb;cursor:pointer
+    }
+    .btn-danger{border-color:#ffd5d5;background:#fff4f4;color:#b3261e}
+
+    /* Right: form */
+    form{padding:18px}
+    .section{padding:18px}
+    .section h3{margin:0 0 12px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width: 680px){.row{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;margin-top:12px}
+    .label{font-size:14px;color:#2f4b40;margin-bottom:6px}
+    .input,.select,.textarea{
+      padding:12px 14px;border:1px solid #e2eee8;border-radius:12px;background:#fbfdfc;outline:none;font-size:15px
+    }
+    .input:focus,.select:focus,.textarea:focus{border-color:var(--primary);box-shadow:0 0 0 6px var(--ring);background:#fff}
+    .hint{font-size:12px;color:var(--muted);margin-top:4px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700;letter-spacing:.2px
+    }
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 16px rgba(42,140,102,.24)}
+    .btn-primary:hover{filter:saturate(1.05);background:var(--primary-600)}
+    .btn-outline{background:#fff;color:var(--primary-700);border:1px solid var(--primary-600)}
+    .note{padding:14px 18px;border-top:1px dashed var(--border);background:#fbfdfc;color:#41635a;font-size:14px;border-radius:0 0 18px 18px}
+
+    .toast{position:fixed;right:18px;bottom:18px;background:#153f31;color:#dff6ec;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);transition:.25s}
+    .toast.show{opacity:1;transform:translateY(0)}
+
+    .brand-name{
+  font-size:27px;
+  color:var(--brand);
+  font-family: "Italianno", cursive;
+  font-weight: 800;
+  font-style: normal;
+
+}
+  </style>
+</head>
+<body>
+  <!-- Topbar (có thể thay bằng header thật của bạn, hoặc bỏ hẳn phần này) -->
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="./trangchu.html">
+        <img src="https://cdn-icons-png.flaticon.com/128/449/449350.png" alt="" width="28" height="28">
+        <span class="brand-name">Hoa Tươi Sài Gòn</span>
+      </a>
+      <div id="authChip" class="user-chip">Tài khoản</div>
+    </div>
+  </header>
+
+  <main class="page">
+    <h2 style="margin:0 0 14px">Cập nhật tài khoản</h2>
+
+    <div class="grid">
+      <!-- LEFT -->
+      <aside class="card profile" aria-label="Ảnh đại diện">
+        <img id="avatar" class="avatar" src="https://i.pravatar.cc/240?img=21" alt="Ảnh đại diện">
+        <div class="upload">
+          <label><i class="fa-solid fa-upload"></i> Tải ảnh mới
+            <input id="avatarInput" type="file" accept="image/*">
+          </label>
+        </div>
+        <p class="meta" id="uidMeta">UID: —</p>
+
+        <div class="quick">
+          <button id="btnLogout" class="btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</button>
+          <a class="btn-ghost" href="./qldonhang.html" style="text-decoration: none;"><i class="fa-solid fa-receipt"></i> Đơn hàng của tôi</a>
+        </div>
+      </aside>
+
+      <!-- RIGHT -->
+      <section class="card">
+        <form id="accountForm" novalidate>
+          <div class="section">
+            <h3>Thông tin chính</h3>
+            <div class="row">
+              <div class="field">
+                <label class="label" for="name">Họ và tên</label>
+                <input id="name" class="input" required placeholder="vd: Nguyễn Ngọc Định">
+              </div>
+              <div class="field">
+                <label class="label" for="phone">Số điện thoại</label>
+                <input id="phone" class="input" placeholder="vd: 0901234567" inputmode="tel">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label class="label" for="email">Email</label>
+                <input id="email" class="input" type="email" placeholder="vd: ban@gmail.com">
+                <div class="hint">Bạn có thể để trống nếu không dùng email.</div>
+              </div>
+              <div class="field">
+                <label class="label" for="birthday">Ngày sinh</label>
+                <input id="birthday" class="input" type="date">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label class="label" for="address">Địa chỉ</label>
+                <input id="address" class="input" placeholder="Số nhà, đường, phường…">
+              </div>
+              <div class="field">
+                <label class="label" for="city">Tỉnh/TP</label>
+                <select id="city" class="select">
+                  <option value="">— Chọn —</option>
+                  <option>TP. Hồ Chí Minh</option>
+                  <option>Hà Nội</option>
+                  <option>Đà Nẵng</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" style="border-top:1px dashed var(--border)">
+            <h3>Đổi mật khẩu (tùy chọn)</h3>
+            <div class="row">
+              <div class="field">
+                <label class="label" for="newPwd">Mật khẩu mới</label>
+                <input id="newPwd" class="input" type="password" minlength="6" placeholder="Tối thiểu 6 ký tự">
+              </div>
+              <div class="field">
+                <label class="label" for="confirmPwd">Nhập lại mật khẩu</label>
+                <input id="confirmPwd" class="input" type="password" minlength="6">
+              </div>
+            </div>
+            <div class="hint">Nếu không muốn đổi, hãy để trống cả 2 ô.</div>
+          </div>
+
+          <div class="section" style="border-top:1px dashed var(--border)">
+            <h3>Tùy chọn nhận thông báo</h3>
+            <div class="row">
+              <label class="field" style="flex-direction:row;align-items:center;gap:10px">
+                <input id="optEmail" type="checkbox"> Nhận ưu đãi qua email
+              </label>
+              <label class="field" style="flex-direction:row;align-items:center;gap:10px">
+                <input id="optSMS" type="checkbox"> Nhắc đơn & khuyến mãi qua SMS
+              </label>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Lưu thay đổi</button>
+            <a href="./trangchu.html" class="btn btn-outline" style="text-decoration: none;">← Về trang chủ</a>
+          </div>
+          <div class="note">
+            Dữ liệu của bạn chỉ được lưu trên thiết bị này để tối ưu trải nghiệm đặt hoa nhanh.
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">Đã lưu!</div>
+
+  <!-- Nhớ đặt sau cùng để có window.Auth từ app-core.js -->
+  <script src="../js/app-core.js"></script>
+  <script>
+    // Helpers
+    const $ = (s, r=document)=>r.querySelector(s);
+    const toast = (m)=> (window.__toast ? __toast(m) : (t=>{t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)})($('#toast')));
+
+    // Prefill
+    const form = $('#accountForm');
+    const fields = {
+      name: $('#name'), phone: $('#phone'), email: $('#email'),
+      address: $('#address'), city: $('#city'), birthday: $('#birthday'),
+      optEmail: $('#optEmail'), optSMS: $('#optSMS')
+    };
+    const uidMeta = $('#uidMeta');
+    const chip = $('#authChip');
+
+    function readRegisteredUser(){
+      try{ return JSON.parse(localStorage.getItem('hcm-flower-new-user')||'null'); }catch{return null;}
+    }
+    function writeRegisteredUser(u){
+      try{ localStorage.setItem('hcm-flower-new-user', JSON.stringify(u)); }catch{}
+    }
+
+    function hydrate(){
+      const auth = window.Auth?.getAuth?.() || {};
+      // show on topbar
+      if (chip) chip.textContent = auth?.name ? auth.name : 'Tài khoản';
+      if (uidMeta) uidMeta.textContent = 'UID: ' + (auth?.uid || '—');
+
+      // prefill
+      fields.name.value = auth.name || '';
+      fields.phone.value = auth.phone || '';
+      fields.email.value = auth.email || '';
+      fields.address.value = auth.address || '';
+      fields.city.value = auth.city || '';
+      if (auth.birthday) fields.birthday.value = auth.birthday;
+      fields.optEmail.checked = !!auth.optEmail;
+      fields.optSMS.checked = !!auth.optSMS;
+
+      // avatar nếu có
+      const av = $('#avatar');
+      if (auth.avatar) av.src = auth.avatar;
+
+      // nếu chưa có Auth, thử lôi từ user đã đăng ký
+      if (!auth.uid){
+        const u = readRegisteredUser();
+        if (u){
+          fields.name.value ||= (u.name||'');
+          fields.email.value ||= (u.email||'');
+          fields.phone.value ||= (u.phone||'');
+        }
+      }
+    }
+    hydrate();
+
+    // Upload avatar (base64 preview + lưu vào Auth)
+    $('#avatarInput')?.addEventListener('change', (e)=>{
+      const f = e.target.files?.[0]; if (!f) return;
+      const rdr = new FileReader();
+      rdr.onload = () => {
+        $('#avatar').src = rdr.result;
+        const auth = window.Auth?.getAuth?.() || {};
+        window.Auth?.setAuth?.({ ...auth, avatar: rdr.result }, 30*24*60*60*1000);
+        toast('Đã cập nhật ảnh đại diện');
+      };
+      rdr.readAsDataURL(f);
+    });
+
+    // Submit
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+
+      // đổi mật khẩu (nếu nhập)
+      const newPwd = $('#newPwd').value.trim();
+      const confirmPwd = $('#confirmPwd').value.trim();
+      if (newPwd || confirmPwd){
+        if (newPwd.length < 6){ toast('Mật khẩu tối thiểu 6 ký tự'); return; }
+        if (newPwd !== confirmPwd){ toast('Mật khẩu nhập lại chưa khớp'); return; }
+        const user = readRegisteredUser() || {};
+        user.name = fields.name.value.trim() || user.name || 'Khách';
+        user.phone = fields.phone.value.trim() || user.phone || '';
+        user.email = fields.email.value.trim() || user.email || '';
+        user.password = newPwd;           // demo: lưu plain; nếu trước đó dùng hash+salt thì thay bằng cách băm tương tự
+        delete user.passwordHash; delete user.salt;
+        writeRegisteredUser(user);
+      }
+
+      // cập nhật Auth
+      const authOld = window.Auth?.getAuth?.() || {};
+      const authNew = {
+        ...authOld,
+        name: fields.name.value.trim() || 'Khách',
+        phone: fields.phone.value.trim(),
+        email: fields.email.value.trim(),
+        address: fields.address.value.trim(),
+        city: fields.city.value,
+        birthday: fields.birthday.value || '',
+        optEmail: fields.optEmail.checked,
+        optSMS: fields.optSMS.checked
+      };
+      window.Auth?.setAuth?.(authNew, 30*24*60*60*1000);
+
+      toast('Đã lưu thay đổi!');
+    });
+
+    // Logout
+    $('#btnLogout')?.addEventListener('click', ()=>{
+      window.Auth?.clearAuth?.();
+      toast('Đã đăng xuất');
+      setTimeout(()=>location.href='./trangchu.html', 700);
+    });
+  </script>
+</body>
+</html>

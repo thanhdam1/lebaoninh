@@ -1,0 +1,4 @@
+[build]
+  # Trỏ đúng thư mục thật trong repo (tránh lỗi lệch dấu/Unicode)
+  publish = "WEBSITE HOA TƯƠI"
+  command = ""

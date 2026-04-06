@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Liên hệ | Hoa Tươi Sài Gòn</title>
+  <meta name="description" content="Liên hệ Hoa Tươi Sài Gòn – Đặt hoa online, giao nhanh trong 2 giờ. Hotline, Zalo, địa chỉ cửa hàng và bản đồ." />
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/128/449/449350.png" type="image/png" sizes="32x32">
+  <style>
+    
+.footer{background:#0f1a13;color:#ddd;padding:36px 0}
+.footer h4{margin:0 0 10px}
+.footer a{color:#fff;text-decoration:none}
+
+    input.invalid, select.invalid, textarea.invalid {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 6px rgba(214,45,32,.1) !important;
+}
+.error.show { display: block !important; }
+.cols{display:grid;grid-template-columns:2fr 1fr 2fr;gap:20px}
+
+    .brand-name{
+  font-size:27px;
+  color:var(--brand);
+  font-family: "Italianno", cursive;
+  font-weight: 800;
+  font-style: normal;
+
+}
+
+    :root{
+      --brand:#1a8b5a;        /* Xanh chủ đạo */
+      --brand-2:#2aa173;      /* Xanh nhạt hơn */
+      --ink:#0f172a;          /* Màu chữ */
+      --muted:#64748b;        /* Mô tả */
+      --bg:#f5faf7;           /* Nền rất nhạt */
+      --card:#ffffff;         /* Nền thẻ */
+      --danger:#f7251a;       /* Lỗi */
+      --ring:rgba(26,139,90,.25);
+      --radius:16px;
+      --shadow:0 8px 30px rgba(16,24,40,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.55;
+    }
+    .container{width:min(1120px,92%);margin-inline:auto}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #eef2f7
+    }
+    .topbar{display:flex;align-items:center;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .brand-icon{height:36px;width:36px;border-radius:999px;background:var(--bg);display:grid;place-items:center;border:1px solid #e6f3ec}
+    .open-time{margin-left:auto;color:var(--muted);font-size:14px}
+
+    /* Hero */
+    .hero{padding:38px 0 10px}
+    .title{font-family:"Playfair Display",serif;font-weight:700;font-size:34px;margin:0 0 6px;color:var(--ink)}
+    .subtitle{margin:0;color:var(--muted)}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:1.2fr .9fr;gap:28px;margin:24px 0 38px}
+    @media (max-width: 920px){.grid{grid-template-columns:1fr}}
+
+    /* Card */
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #edf2f7}
+
+    /* Form */
+    form{padding:22px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:640px){.row{grid-template-columns:1fr}}
+    label{font-weight:600;display:block;margin:6px 0 8px}
+    .control{position:relative}
+    input,select,textarea{
+      width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#fff;outline:none;font:inherit;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 6px var(--ring)}
+    textarea{min-height:140px;resize:vertical}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .error{font-size:12px;color:#fff;background:var(--danger);padding:6px 10px;border-radius:10px;display:none;margin-top:8px}
+
+    .agree{display:flex;align-items:flex-start;gap:10px;margin-top:4px}
+    .agree input{margin-top:4px}
+
+    .actions{display:flex;gap:12px;margin-top:16px}
+    .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{filter:brightness(.95)}
+    .btn-ghost{background:#eef7f2;color:var(--brand)}
+
+    /* Contact panel */
+    .panel{padding:18px}
+    .list{display:grid;gap:12px}
+    .item{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:14px;border:1px dashed #e6f0ea;background:#fcfffd}
+    .ico{height:36px;width:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;font-weight:700}
+    .item h4{margin:2px 0 4px}
+    .item p{margin:0;color:var(--muted)}
+    .hours{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px;color:#0b3b27}
+
+    /* Map */
+    .map{overflow:hidden;border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius);max-height:360px}
+    .map iframe{display:block;border:0;width:100%;height:360px}
+
+    /* Toast */
+    .toast{position:fixed;right:16px;bottom:16px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;opacity:0;transform:translateY(8px);transition:.3s;box-shadow:var(--shadow);z-index:9999}
+    .toast.show{opacity:1;transform:translateY(0)}
+
+    /* Floating actions */
+    .fab{position:fixed;right:16px;display:grid;gap:12px;z-index:50}
+    .fab a{display:grid;place-items:center;height:48px;width:48px;border-radius:999px;color:#fff;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
+    .fab .zalo{bottom:84px;background:#0068ff}
+    .fab .call{bottom:24px;background:var(--brand)}
+
+    .subscribe{display:flex;gap:8px}
+.subscribe input{flex:1;min-width:180px;height:38px;border-radius:10px;border:1px solid #444;background:#111;color:#fff;padding:0 10px}
+
+.agree{
+  display:flex;
+  align-items:center;          /* canh giữa theo chiều dọc */
+  gap:10px;                    /* cách checkbox và chữ */
+  margin-top:8px;
+  flex-wrap:wrap;              /* nhỏ màn hình thì xuống dòng gọn gàng */
+}
+.agree label{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+  margin:0;
+}
+.agree input{
+  flex:0 0 auto;               /* giữ kích thước cố định cho checkbox */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="./trangchu.html">
+        <span class="brand-icon"><img src="https://cdn-icons-png.flaticon.com/128/449/449350.png" alt="" height="30px" width="30px"></span>
+        <span class="brand-name">Hoa Tươi Sài Gòn</span>
+      </a>
+      <div class="open-time">⏰ 07:00 – 22:00 • Giao nhanh trong 2 giờ</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">Liên hệ</h1>
+      <p class="subtitle">Cần tư vấn kiểu dáng – màu hoa – thiệp chúc? Để lại thông tin, shop sẽ phản hồi trong vài phút.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="grid">
+      <!-- Form -->
+      <section class="card">
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div class="control">
+              <label for="fullname">Họ và tên</label>
+              <input id="fullname" name="fullname" placeholder="Nguyễn Văn A" autocomplete="name" required>
+              <div class="error" id="err-fullname">Vui lòng nhập họ tên.</div>
+            </div>
+            <div class="control">
+              <label for="phone">Số điện thoại</label>
+              <input id="phone" name="phone" inputmode="tel" placeholder="09xx xxx xxx" required>
+              <div class="error" id="err-phone">Số điện thoại chưa đúng định dạng.</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="control">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="ban@example.com">
+              <div class="error" id="err-email">Email chưa hợp lệ.</div>
+            </div>
+            <div class="control">
+              <label for="topic">Chủ đề</label>
+              <select id="topic" name="topic">
+                <option>Đặt hoa sinh nhật</option>
+                <option>Hoa khai trương</option>
+                <option>Hoa chia buồn</option>
+                <option>Hộp hoa mica</option>
+                <option>Khác...</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
+            <label for="message">Lời nhắn</label>
+            <textarea id="message" name="message" placeholder="Ví dụ: giao giúp mình trước 9h sáng, tông hồng – trắng, ghi thiệp chúc mừng..."></textarea>
+            
+          </div>
+
+
+          <div class="agree">
+  <input type="checkbox" id="agree" required>
+  <label for="agree">* Bấm Gửi, hệ thống sẽ tạo tin nhắn đến Zalo/Email của shop.</label>
+</div>
+<div class="error" id="err-agree">Vui lòng đồng ý để shop liên hệ tư vấn.</div>
+
+          <div class="error" id="err-agree">Vui lòng đồng ý để shop liên hệ tư vấn.</div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Gửi yêu cầu</button>
+            <button class="btn btn-ghost" type="reset">Nhập lại</button>
+          </div>
+          <div class="error" id="err-form" style="display:none"></div>
+        </form>
+      </section>
+
+      <!-- Contact info -->
+      <aside class="card">
+        <div class="panel">
+          <div class="list">
+            <div class="item">
+              <div class="ico">☎</div>
+              <div>
+                <h4>Hotline</h4>
+                <p><a href="tel:0900000000" style="text-decoration: none;">0934 123 036</a> (7:00 – 22:00)</p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="ico">💬</div>
+              <div>
+                <h4>Zalo chăm sóc</h4>
+                <p><a href="https://zalo.me/0900000000" target="_blank" rel="noopener" style="text-decoration: none;">Chat ngay trên Zalo</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="ico">📧</div>
+              <div>
+                <h4>Email</h4>
+                <p><a href="mailto:hoatuoisaigon@htsg.vn" style="text-decoration: none;">hoatuoisaigon@htsg.vn</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="ico">📍</div>
+              <div>
+                <h4>Địa chỉ cửa hàng</h4>
+                <p>77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú, TP.HCM</p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="ico">⏱</div>
+              <div>
+                <h4>Giờ mở cửa</h4>
+                <div class="hours">
+                  <span>Thứ 2 – CN</span><span>07:00 – 22:00</span>
+                  <span>Giao nhanh</span><span>Trong 2 giờ (nội thành)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map">
+          <!-- Thay toạ độ map theo vị trí cửa hàng của bạn -->
+          <iframe
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps?q=77%20T%C3%A2n%20Th%E1%BA%A1nh%2C%20Ph%C3%BA%20Th%E1%BA%A1nh%2C%20T%C3%A2n%20Ph%C3%BA%2C%20TP.HCM&output=embed"
+  width="600"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+></iframe>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Hoa tươi Sài Gòn</h4>
+          <p>77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú, TP.HCM</p>
+          <p>Hotline: <a href="tel:0934123036">0934 123 036</a></p>
+          <p>Email: hoatuoisaigon@htsg.vn</p>
+        </div>
+        <div>
+          <h4>Chính sách</h4>
+          <ul>
+            <li><a href="#">Giao hàng</a></li>
+            <li><a href="#">Đổi trả</a></li>
+            <li><a href="#">Thanh toán</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Đăng ký nhận ưu đãi</h4>
+          <form class="subscribe" onsubmit="event.preventDefault();toast('Đã đăng ký thành công!')">
+            <input placeholder="Email của bạn"/>
+            <button class="btn">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:18px;color:#aaa">© 2025 Hoa tươi Sài Gòn.</p>
+    </div>
+  </footer>
+  <!-- Floating call & Zalo (tuỳ chỉnh số điện thoại)
+  <div class="fab" style="bottom:16px">
+    <a class="zalo" style="position:fixed" href="https://zalo.me/0900000000" target="_blank" rel="noopener" aria-label="Chat Zalo">Z</a>
+    <a class="call" style="position:fixed" href="tel:0900000000" aria-label="Gọi ngay">📞</a>
+  </div> -->
+
+  <div class="toast" id="toast">Đã gửi yêu cầu! Shop sẽ liên hệ sớm.</div>
+
+<!-- SDK + init (đặt trước code form) -->
+<!-- EmailJS SDK v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ⚠️ LẤY TỪ Dashboard → Account → API Keys → Public Key
+  const PUBLIC_KEY = "e7V4w2gKVNB6LjMOw".trim();
+
+  // v4 phải init theo object { publicKey: ... }
+  emailjs.init({ publicKey: PUBLIC_KEY });
+
+  // Log 4 ký tự đầu/cuối để tự check đang dùng key nào
+  console.log("EmailJS publicKey:", PUBLIC_KEY.slice(0,4) + "..." + PUBLIC_KEY.slice(-4));
+</script>
+
+<script>
+  const form  = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+
+  const EMAILJS = {
+    SERVICE_ID : "service_1ffvoyq",
+    TEMPLATE_ID: "template_kfh043f",
+  };
+
+  const phoneOk = (v) => /^(0|\+84)[0-9]{9,10}$/.test((v||'').replace(/\s|\./g,''));
+  const emailOk = (v) => /^[a-zA-Z0-9_\-.+]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(v||'');
+
+  const $ = (sel) => document.querySelector(sel);
+  const byId = (id) => document.getElementById(id);
+
+  // Helpers hiển thị lỗi
+  function setFieldError(input, errBox, msg) {
+    if (!errBox) return;
+    if (msg) {
+      input?.classList.add('invalid');
+      errBox.textContent = msg;
+      errBox.classList.add('show');
+      input?.setAttribute('aria-invalid', 'true');
+      if (errBox.id) input?.setAttribute('aria-describedby', errBox.id);
+    } else {
+      input?.classList.remove('invalid');
+      errBox.classList.remove('show');
+      errBox.textContent = '';
+      input?.removeAttribute('aria-invalid');
+      input?.removeAttribute('aria-describedby');
+    }
+  }
+
+  function setFormError(msg) {
+    const formErr = byId('err-form');
+    if (!formErr) return;
+    if (msg) {
+      formErr.textContent = msg;
+      formErr.classList.add('show');
+      formErr.style.display = 'block';
+    } else {
+      formErr.textContent = '';
+      formErr.classList.remove('show');
+      formErr.style.display = 'none';
+    }
+  }
+
+  // Validate theo từng field
+  function validateFields() {
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    const fullname = byId('fullname');
+    const phone    = byId('phone');
+    const email    = byId('email');
+    const agree    = byId('agree');
+
+    let ok = true;
+
+    // Họ tên
+    if (!data.fullname || data.fullname.trim().length < 2) {
+      setFieldError(fullname, byId('err-fullname'), 'Vui lòng nhập họ tên (tối thiểu 2 ký tự).');
+      ok = false;
+    } else {
+      setFieldError(fullname, byId('err-fullname'), '');
+    }
+
+    // Điện thoại
+    if (!phoneOk(data.phone)) {
+      setFieldError(phone, byId('err-phone'), 'Số điện thoại chưa đúng định dạng (0/ +84, 10–11 số).');
+      ok = false;
+    } else {
+      setFieldError(phone, byId('err-phone'), '');
+    }
+
+    // Email (đang bắt buộc theo form của chị)
+    if (!emailOk(data.email)) {
+      setFieldError(email, byId('err-email'), 'Email chưa hợp lệ.');
+      ok = false;
+    } else {
+      setFieldError(email, byId('err-email'), '');
+    }
+
+    // Đồng ý liên hệ
+    if (!agree.checked) {
+      setFieldError(agree, byId('err-agree'), 'Vui lòng đồng ý để shop liên hệ tư vấn.');
+      ok = false;
+    } else {
+      setFieldError(agree, byId('err-agree'), '');
+    }
+
+    // Lỗi chung (nếu có)
+    setFormError(ok ? '' : 'Vui lòng kiểm tra và sửa các trường được đánh dấu.');
+
+    return { ok, data };
+  }
+
+  // Validate realtime khi người dùng nhập
+  ['input', 'change', 'blur'].forEach(evt => {
+    form.addEventListener(evt, (e) => {
+      const t = e.target;
+      if (!(t instanceof HTMLElement)) return;
+
+      // Chỉ validate field bị tác động để “mượt”
+      if (t.id === 'fullname') {
+        if (!t.value || t.value.trim().length < 2)
+          setFieldError(t, byId('err-fullname'), 'Vui lòng nhập họ tên (tối thiểu 2 ký tự).');
+        else setFieldError(t, byId('err-fullname'), '');
+      }
+
+      if (t.id === 'phone') {
+        if (!phoneOk(t.value))
+          setFieldError(t, byId('err-phone'), 'Số điện thoại chưa đúng định dạng (0/ +84, 10–11 số).');
+        else setFieldError(t, byId('err-phone'), '');
+      }
+
+      if (t.id === 'email') {
+        if (!emailOk(t.value))
+          setFieldError(t, byId('err-email'), 'Email chưa hợp lệ.');
+        else setFieldError(t, byId('err-email'), '');
+      }
+
+      if (t.id === 'agree') {
+        if (!t.checked)
+          setFieldError(t, byId('err-agree'), 'Vui lòng đồng ý để shop liên hệ tư vấn.');
+        else setFieldError(t, byId('err-agree'), '');
+      }
+
+      // Cập nhật lỗi chung tổng quát (ẩn khi mọi thứ đã ổn)
+      const { ok } = validateFields();
+      if (ok) setFormError('');
+    }, true);
+  });
+
+  const makeTicketId = () => {
+    const d=new Date(),pad=n=>String(n).padStart(2,'0');
+    return `HTSG-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
+  };
+
+  async function sendThanksEmail(data, ticketId){
+    const payload = {
+      to_email    : data.email,
+      to_name     : data.fullname,
+      topic       : data.topic || 'Liên hệ',
+      message     : data.message || '',
+      ticket_id   : ticketId,
+      shop_name   : 'Hoa Tươi Sài Gòn',
+      shop_phone  : '0934 123 036',
+      shop_address: '77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú, TP.HCM',
+      shop_email  : 'hoatuoisaigon@htsg.vn',
+      reply_to    : 'hoatuoisaigon@htsg.vn',
+      from_name   : 'Hoa Tươi Sài Gòn'
+    };
+    return emailjs.send(EMAILJS.SERVICE_ID, EMAILJS.TEMPLATE_ID, payload);
+  }
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+
+    // Validate tổng
+    const { ok, data } = validateFields();
+    if (!ok) {
+      // Scroll đến field lỗi đầu tiên
+      const firstInvalid = form.querySelector('.invalid');
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const ticketId = makeTicketId();
+
+    try {
+      await sendThanksEmail(data, ticketId);
+      setFormError(''); // clear lỗi chung
+      toast.textContent = 'Đã gửi yêu cầu! Shop sẽ liên hệ sớm.';
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2800);
+      form.reset();
+      // Xóa viền đỏ/err sau reset
+      form.querySelectorAll('.invalid').forEach(el=>el.classList.remove('invalid'));
+      form.querySelectorAll('.error').forEach(el=>{ if(el.id!=='err-form') { el.classList.remove('show'); el.textContent=''; } });
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      const msg = err?.text || err?.message || 'Không rõ nguyên nhân';
+      // Hiển thị lỗi chung dưới form (không alert)
+      setFormError('Xin lỗi, hiện chưa gửi được email. Chi tiết: ' + msg);
+      // Không tô đỏ từng field vì đây là lỗi hệ thống/gửi mail
+    }
+  });
+</script>
+
+
+</body>
+</html>

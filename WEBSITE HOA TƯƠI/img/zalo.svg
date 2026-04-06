@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- nền xanh Zalo, có thể bỏ nếu bạn dùng nền của nút -->
+  <rect width="256" height="256" rx="56" fill="#0a7cff"></rect>
+  <!-- chữ 'Zalo' trắng đơn giản (wordmark) -->
+  <text x="50%" y="58%" text-anchor="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-weight="700" font-size="96" fill="#ffffff">Zalo</text>
+</svg>
