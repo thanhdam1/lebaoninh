@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đơn hàng của tôi | Hoa Tươi Sài Gòn</title>
+  <meta name="description" content="Danh sách đơn hàng đã đặt của bạn tại Hoa Tươi Sài Gòn.">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/449/449350.png" type="image/png" sizes="32x32">
+  <style>
+    /* Bổ sung nhẹ cho bảng đơn hàng (không ảnh hưởng style.css hiện có) */
+    .page-wrap { background:#f6fbf7; }
+    .page-hero { padding:28px 0 8px; text-align:center; }
+    .page-hero h1 { font-size:28px; margin:0 0 6px; }
+    .orders-card { background:#fff; border:1px solid #e7e7e7; border-radius:14px; padding:16px; box-shadow:0 6px 16px rgba(0,0,0,.04); }
+    .orders-toolbar { display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin:0 0 12px; }
+    .orders-toolbar .left { display:flex; gap:8px; align-items:center; }
+    .orders-toolbar input[type="text"] { padding:8px 10px; border:1px solid #e3e3e3; border-radius:10px; min-width:240px; }
+    table.orders { width:100%; border-collapse:separate; border-spacing:0; }
+    .orders th, .orders td { padding:12px 10px; border-bottom:1px solid #f0f0f0; text-align:left; vertical-align:top; }
+    .orders th { font-weight:600; color:#333; background:#fafafa; position:sticky; top:0; z-index:1; }
+    .badge-status { padding:4px 8px; border-radius:999px; font-size:12px; display:inline-block; border:1px solid transparent; }
+    .st-new { background:#eef7ff; color:#1466cc; border-color:#cfe6ff; }
+    .st-paid { background:#ecfbf1; color:#13884b; border-color:#c6f0d9; }
+    .st-cod  { background:#fff7ea; color:#9a6600; border-color:#ffe6b8; }
+    .st-cancel { background:#fdeeee; color:#b61e1e; border-color:#f7caca; }
+    .row-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .btn-ghost { padding:6px 10px; border:1px solid #e5e5e5; background:#fff; border-radius:10px; cursor:pointer; }
+    .btn-ghost:hover { background:#f7f7f7; }
+    .empty { text-align:center; padding:28px 8px; color:#666; }
+    .details { background:#fcfffd; border:1px dashed #dfeee4; border-radius:12px; padding:12px; margin-top:8px; }
+    .details h4 { margin:0 0 8px; font-size:14px; }
+    .details ul { margin:0; padding-left:16px; }
+    .total { font-weight:700; }
+  </style>
+</head>
+<body class="page-wrap">
+
+  <!-- Header: copy y nguyên từ trang chủ -->
+  <header class="topbar">
+    <div class="container flex between center">
+      <a class="brand" href="/trangchu.html" id="homeLink">
+        <span class="brand-icon"><img src="https://cdn-icons-png.flaticon.com/128/449/449350.png" alt="" height="30" width="30"></span>
+        <span class="brand-name">Hoa Tươi Sài Gòn</span>
+      </a>
+      <div class="search-wrap">
+        <input id="searchInput" class="search" placeholder="Tìm sản phẩm..."/>
+        <button id="searchBtn" class="btnx icon-btn" aria-label="Tìm kiếm" title="Tìm kiếm">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <span class="time">🕒 07:00 - 22:00</span>
+      </div>
+      <nav class="socials">
+        <a aria-label="Facebook" href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a aria-label="Messenger" href="#" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a aria-label="TikTok" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a aria-label="Pinterest" href="#" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+        <a aria-label="YouTube" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      </nav>
+      <button id="cartBtn" class="icon-btn cart-btn" aria-label="Giỏ hàng">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+      <a href="./dangnhap.html" class="btn btn-brand btn-login" aria-label="Đăng nhập" style="text-decoration:none; height: 40px">
+        <i class="fa-regular fa-user" style="margin-right:5px;"></i><span>Đăng nhập</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Nav: copy từ trang chủ -->
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav-list" id="navList">
+        <li><a href="./trangchu.html">Trang chủ</a></li>
+        <li><a href="./gioithieu.html">Giới thiệu</a></li>
+        <li><a href="./lienhe.html">Liên hệ</a></li>
+        <li><a href="./trangchu.html#sinhnhat">Hoa sinh nhật</a></li>
+        <li><a href="./trangchu.html#khaitruong">Hoa khai trương</a></li>
+        <li><a href="./trangchu.html#totnghiep">Hoa tốt nghiệp</a></li>
+        <li><a href="./trangchu.html#giohoa">Giỏ hoa</a></li>
+        <li><a href="./trangchu.html#gaubong">Hoa gấu bông</a></li>
+        <li><a href="./trangchu.html#hopmica">Hộp hoa mica</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero nhỏ -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Đơn hàng của tôi</h1>
+      <p>Xem lại các đơn bạn đã đặt. <a href="./trangchu.html" style="text-decoration: none;">← Về Trang chủ</a></p>
+    </div>
+  </section>
+
+  <!-- Nội dung đơn hàng -->
+  <main class="container">
+    <div class="orders-card">
+      <div class="orders-toolbar">
+        <div class="left">
+          <input type="text" id="orderSearch" placeholder="Tìm theo mã đơn, tên sản phẩm...">
+        </div>
+        <div class="right">
+          <button id="refreshOrders" class="btn-ghost"><i class="fa-solid fa-rotate"></i> Tải lại</button>
+          <button id="clearOrders" class="btn-ghost"><i class="fa-regular fa-trash-can"></i> Xoá tất cả (local)</button>
+        </div>
+      </div>
+
+      <div id="ordersMount"></div>
+    </div>
+  </main>
+
+  <!-- Footer: copy nguyên -->
+  <footer class="footer" style="margin-top:40px">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Hoa tươi Sài Gòn</h4>
+          <p>77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú, TP.HCM</p>
+          <p>Hotline: <a href="tel:0934123036">0934 123 036</a></p>
+          <p>Email: hoatuoisaigon@htsg.vn</p>
+        </div>
+        <div>
+          <h4>Chính sách</h4>
+          <ul>
+            <li><a href="#">Giao hàng</a></li>
+            <li><a href="#">Đổi trả</a></li>
+            <li><a href="#">Thanh toán</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Đăng ký nhận ưu đãi</h4>
+          <form class="subscribe" onsubmit="event.preventDefault();toast('Đã đăng ký thành công!')">
+            <input placeholder="Email của bạn"/>
+            <button class="btn">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Hoa tươi Sài Gòn.</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- JS: chỉ cho trang đơn hàng -->
+  <script>
+    // ----- Helpers -----
+    const fmt = new Intl.NumberFormat('vi-VN');
+    const toVND = v => (v??0).toLocaleString('vi-VN') + '₫';
+    const getOrders = () => {
+      try { return JSON.parse(localStorage.getItem('orders')||'[]'); }
+      catch { return []; }
+    };
+    const saveOrders = (list) => localStorage.setItem('orders', JSON.stringify(list));
+
+    // Chuẩn hoá item (đề phòng khác tên trường)
+    function itemTotal(it){
+      const price = it.price ?? it.curPrice ?? it.currentPrice ?? it.unitPrice ?? 0;
+      const qty   = it.qty ?? it.quantity ?? it.count ?? 1;
+      return Number(price) * Number(qty);
+    }
+    function orderTotal(order){
+      const items = Array.isArray(order.items) ? order.items : [];
+      return items.reduce((s,it)=> s + itemTotal(it), 0);
+    }
+    function statusBadge(order){
+      const pm = (order.paymentMethod||'').toLowerCase();
+      const st = (order.status||'').toLowerCase();
+      if (st==='cancelled' || st==='canceled') return '<span class="badge-status st-cancel">Đã huỷ</span>';
+      if (pm.includes('cod')) return '<span class="badge-status st-cod">COD</span>';
+      if (pm.includes('bank') || pm.includes('chuyển')) return '<span class="badge-status st-paid">Đã thanh toán</span>';
+      return '<span class="badge-status st-new">Mới tạo</span>';
+    }
+
+    // ----- Render -----
+    function render(list){
+      const mount = document.getElementById('ordersMount');
+      if (!list.length){
+        mount.innerHTML = '<div class="empty">Chưa có đơn hàng nào. <a href="./trangchu.html">Mua sắm ngay</a> 🌸</div>';
+        return;
+      }
+      const rows = list.map((o,idx)=>{
+        const created = o.createdAt ? new Date(o.createdAt) : null;
+        const createdStr = created ? created.toLocaleString('vi-VN') : '(chưa rõ)';
+        const total = orderTotal(o);
+        const items = Array.isArray(o.items)? o.items: [];
+        const details = `
+          <div class="details" id="dt-${idx}" style="display:none">
+            <h4>Sản phẩm</h4>
+            <ul>
+              ${items.map(it=>{
+                const name = it.name ?? it.title ?? ('SP #' + (it.id ?? ''));
+                const qty  = it.qty ?? it.quantity ?? 1;
+                const price= it.price ?? it.curPrice ?? it.currentPrice ?? 0;
+                return `<li>${name} × ${qty} — ${toVND(price)} (tạm: ${toVND(itemTotal(it))})</li>`;
+              }).join('')}
+            </ul>
+            <p class="total">Tổng cộng: ${toVND(total)}</p>
+            ${o.note ? `<p><b>Lời nhắn:</b> ${o.note}</p>`: '' }
+            ${o.receiver ? `<p><b>Người nhận:</b> ${o.receiver} — ${o.phone||''}</p>`: '' }
+            ${o.address ? `<p><b>Địa chỉ:</b> ${o.address}</p>`: '' }
+          </div>
+        `;
+        return `
+          <tr>
+            <td><b>${o.orderId||'(chưa có mã)'}</b><br><small>${createdStr}</small></td>
+            <td>${items.length} SP</td>
+            <td>${toVND(total)}</td>
+            <td>${statusBadge(o)}</td>
+            <td>
+              <div class="row-actions">
+                <button class="btn-ghost" data-act="toggle" data-idx="${idx}"><i class="fa-regular fa-eye"></i> Xem chi tiết</button>
+                <button class="btn-ghost" data-act="remove" data-idx="${idx}"><i class="fa-regular fa-trash-can"></i> Xoá</button>
+              </div>
+              ${details}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      mount.innerHTML = `
+        <div style="overflow:auto; max-height:70vh;">
+          <table class="orders">
+            <thead>
+              <tr>
+                <th>Mã đơn & thời gian</th>
+                <th>Số SP</th>
+                <th>Tổng tiền</th>
+                <th>Thanh toán</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      `;
+
+      // Gắn sự kiện cho nút trong bảng
+      mount.querySelectorAll('[data-act]').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          const act = btn.getAttribute('data-act');
+          const idx = Number(btn.getAttribute('data-idx'));
+          if (act==='toggle'){
+            const box = document.getElementById('dt-'+idx);
+            if (box) box.style.display = (box.style.display==='none' ? '' : 'none');
+          }
+          if (act==='remove'){
+            const conf = confirm('Xoá đơn này khỏi máy (local)?');
+            if (!conf) return;
+            const cur = getOrders();
+            cur.splice(idx,1);
+            saveOrders(cur);
+            render(cur);
+            toast('Đã xoá đơn khỏi máy');
+          }
+        });
+      });
+    }
+
+    // ----- Search -----
+    function searchOrders(term){
+      const list = getOrders();
+      if (!term) return render(list);
+      const q = term.toLowerCase();
+      const filtered = list.filter(o=>{
+        const id = (o.orderId||'').toLowerCase();
+        const itemsTxt = (Array.isArray(o.items)? o.items.map(it=> (it.name||it.title||'') ).join(' ') : '').toLowerCase();
+        return id.includes(q) || itemsTxt.includes(q);
+      });
+      render(filtered);
+    }
+
+    // ----- Toast (tái dùng mini) -----
+    function toast(msg){
+      const el = document.getElementById('toast');
+      if (!el) return alert(msg);
+      el.textContent = msg;
+      el.className = 'toast show';
+      setTimeout(()=>{ el.className='toast'; }, 1800);
+    }
+
+    // ----- Init -----
+    document.getElementById('refreshOrders').addEventListener('click', ()=> render(getOrders()));
+    document.getElementById('clearOrders').addEventListener('click', ()=>{
+      if (confirm('Xoá TẤT CẢ đơn khỏi localStorage?')) {
+        localStorage.removeItem('orders');
+        render([]);
+        toast('Đã xoá tất cả đơn (local)');
+      }
+    });
+    document.getElementById('orderSearch').addEventListener('input', (e)=> searchOrders(e.target.value));
+
+    // Lần đầu tải
+    render(getOrders());
+
+    // Đăng nhập
+
+
+const AUTH_KEY = 'hcm-auth';
+
+function getAuth() {
+  const raw = localStorage.getItem(AUTH_KEY);
+  if (!raw) return null;
+  try {
+    const obj = JSON.parse(raw);
+    if (obj.exp && Date.now() > obj.exp) {
+      clearAuth();
+      return null;
+    }
+    return obj;
+  } catch {
+    return null;
+  }
+}
+function clearAuth() {
+  localStorage.removeItem(AUTH_KEY);
+}
+
+// Thay nút "Đăng nhập" -> menu user nếu đã đăng nhập
+(function hydrateHeader() {
+  const auth = getAuth();
+  const loginBtn = document.querySelector('.btn-login');
+
+  if (!loginBtn) return;
+
+  if (auth) {
+    // Lấy chữ cái đầu làm avatar
+    const initials = (auth.name || 'KH').trim().split(/\s+/).map(p => p[0]).slice(-2).join('').toUpperCase();
+
+    const wrap = document.createElement('div');
+    wrap.className = 'user-menu';
+    wrap.innerHTML = `
+    <button class="user-btn" id="userMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">
+      <span class="user-avatar">${initials}</span>
+      <span class="user-name">${auth.name}</span>
+      <i class="fa-solid fa-caret-down user-caret" aria-hidden="true"></i>
+    </button>
+
+    <div class="user-dropdown" id="userDropdown" role="menu" aria-label="Tài khoản">
+      <a href="/qldonhang.html" class="user-item">Đơn hàng của tôi</a>
+      <a href="/taikhoan.html" class="user-item">Tài khoản</a>
+      <hr class="user-divider">
+      <button id="logoutBtn" class="user-logout" type="button">Đăng xuất</button>
+    </div>
+  `;
+    loginBtn.replaceWith(wrap);
+
+    const btn = wrap.querySelector('#userMenuBtn');
+    const dd = wrap.querySelector('#userDropdown');
+    const logoutBtn = wrap.querySelector('#logoutBtn');
+
+    // Toggle dropdown (click)
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Đóng khi click ra ngoài / nhấn Esc
+    document.addEventListener('click', (e) => {
+      if (!wrap.contains(e.target)) {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', () => {
+      clearAuth();
+      location.reload();
+    });
+  } else {
+    // Ví dụ: bắt đăng nhập trước khi thanh toán
+    const checkoutBtn = document.querySelector('.btn.checkout');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', () => {
+        const a = getAuth();
+        if (!a) {
+          const next = encodeURIComponent(location.pathname);
+          window.location.href = `/dangnhap.html?next=${next}`;
+        } else {
+          window.location.href = '/thanhtoan.html';
+        }
+      });
+    }
+  }
+
+})();
+  </script>
+
+</body>
+</html>
