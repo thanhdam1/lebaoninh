@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hoatuoisaigon – Hoa đẹp giao nhanh</title>
+  <meta name="description" content="Đặt hoa online nhanh trong 2 giờ. Giao nội thành, ảnh thật như mẫu.">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/128/449/449350.png" type="image/png" sizes="32x32">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    
+    <div class="container flex between center">
+      <a class="brand" href="#" id="homeLink">
+        <span class="brand-icon"><img src="https://cdn-icons-png.flaticon.com/128/449/449350.png" alt="" height="30px" width="30px"></span>
+        <span class="brand-name">Hoa Tươi Sài Gòn</span>
+      </a>
+      <div class="search-wrap">
+        <input id="searchInput" class="search" placeholder="Tìm sản phẩm..."/>
+        <button id="searchBtn" class="btnx icon-btn" aria-label="Tìm kiếm" title="Tìm kiếm">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        <span class="time">🕒 07:00 - 22:00</span>
+      </div>
+
+        <nav class="socials">
+        <a aria-label="Facebook" href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a aria-label="Messenger" href="#" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a aria-label="TikTok" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <!-- <a aria-label="Zalo" href="https://zalo.me/0911379581" target="_blank">    </a> -->
+        <a aria-label="Pinterest" href="#" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+        <a aria-label="YouTube" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      </nav>
+
+      
+      <!-- <div class="top-actions"> -->
+          <button id="cartBtn" class="icon-btn cart-btn" aria-label="Giỏ hàng">
+        <i class="fa-solid fa-cart-shopping"></i>
+         <span class="badge" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
+      </button>
+
+ <a href="./dangnhap.html" class="btn btn-brand btn-login" aria-label="Đăng nhập" style="text-decoration: none; height: 40px">
+  <i class="fa-regular fa-user" style="margin-right: 5px;"></i>
+  <span>Đăng nhập</span>
+</a>
+      <!-- </div> -->
+    </div>
+  </header>
+
+  <!-- Main nav -->
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav-list" id="navList">
+        <li><a data-cat="all" href="#">Trang chủ</a></li>
+        <li><a href="./gioithieu.html">Giới thiệu</a></li>
+<li><a href="./danhmuc.html?cat=sinhnhat">Hoa sinh nhật</a></li>
+<li><a href="./danhmuc.html?cat=khaitruong">Hoa khai trương</a></li>
+<li><a href="./danhmuc.html?cat=totnghiep">Hoa tốt nghiệp</a></li>
+<li><a href="./danhmuc.html?cat=giohoa">Giỏ hoa</a></li>
+<li><a href="./danhmuc.html?cat=gaubong">Hoa gấu bông</a></li>
+<li><a href="./danhmuc.html?cat=hopmica">Hộp mica</a></li>
+        <li><a href="./lienhe.html">Liên hệ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero slider -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <h1>ĐẶT HOA ONLINE – ĐẸP & NHANH</h1>
+        <p>Miễn phí thiệp – Ảnh thật – Giao nhanh trong 2 giờ</p>
+        <div class="slider" id="slider">
+          <div class="slides">
+            <!-- Lễ/seasonal & phụ nữ Việt Nam -->
+            <img style="object-fit: fill;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDK_IsaxzEOHv3_UrSNkO7qTAaWv1tlAPYabNeKYtAyoZX8ki3cteIhdw&s=10" alt="Hoa tuoi sai gon">
+            <img style="object-fit: fill;" src="https://shophoasunny.com/wp-content/uploads/2023/03/banner-shop-hoa.jpg" alt="Valentine Roses">
+            <img style="object-fit: fill;" src="./img/hoatuoisaigon.jpg" alt="Women's Day 8/3">
+            <img style="object-fit: fill;" src="https://img2.thuthuatphanmem.vn/uploads/2018/12/31/vuon-hoa-tulip-dep_111459018.jpg" alt="Graduation Flowers 20/11">
+          </div>
+          <div class="slider-dots" id="sliderDots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toolbar: chips + sort -->
+  <section class="container toolbar">
+    <div class="chips" id="chips">
+      <a class="chip" href="./danhmuc.html" style="text-decoration:none;">Xem danh mục</a>
+    </div>
+    <div class="sort">
+      <label for="sortSelect">Sắp xếp:</label>
+      <select id="sortSelect">
+        <option value="default">Mặc định</option>
+        <option value="priceAsc">Giá: Thấp → Cao</option>
+        <option value="priceDesc">Giá: Cao → Thấp</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Product grid -->
+  <section class="container">
+    <div id="productGrid" class="grid"></div>
+  </section>
+
+    <div id="checkoutModal" class="modal-checkout">
+    <div class="modal-content wide">
+      <button class="close" id="closeCheckout"><i class="fa-solid fa-xmark"></i></button>
+      <h3>THÔNG TIN THANH TOÁN</h3>
+      <form id="checkoutForm" class="checkout-grid">
+        <input required placeholder="Họ và tên người nhận">
+        <input required placeholder="Số điện thoại">
+        <input placeholder="Email">
+        <input placeholder="Địa chỉ nhận hàng">
+        <select required>
+          <option value="">Chọn tỉnh/thành</option>
+          <option>TP. Hồ Chí Minh</option>
+          <option>Hà Nội</option>
+        </select>
+        <input type="datetime-local" required>
+        <textarea placeholder="Lời nhắn lên thiệp (nếu có)"></textarea>
+      </form>
+      <div class="pay-row">
+        <label><input type="radio" name="pay" checked> COD (Thanh toán khi nhận)</label>
+        <label><input type="radio" name="pay"> Chuyển khoản</label>
+      </div>
+      <button class="btn-primary" id="placeOrderBtn">ĐẶT HÀNG</button>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Hoa tươi Sài Gòn</h4>
+          <p>77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú, TP.HCM</p>
+          <p>Hotline: <a href="tel:0934123036">0934 123 036</a></p>
+          <p>Email: hoatuoisaigon@htsg.vn</p>
+        </div>
+        <div>
+          <h4>Chính sách</h4>
+          <ul>
+            <li><a href="#">Giao hàng</a></li>
+            <li><a href="#">Đổi trả</a></li>
+            <li><a href="#">Thanh toán</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Đăng ký nhận ưu đãi</h4>
+          <form class="subscribe" onsubmit="event.preventDefault();toast('Đã đăng ký thành công!')">
+            <input placeholder="Email của bạn"/>
+            <button class="btn">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Hoa tươi Sài Gòn.</p>
+    </div>
+  </footer>
+
+  <!-- Floating buttons -->
+<!-- Floating Action Buttons -->
+<div class="fab-stack" role="complementary" aria-label="Liên hệ nhanh">
+  <a class="fab-btn zalo" href="https://zalo.me/g/nuepdm346" target="_blank" rel="noopener" aria-label="Chat Zalo">
+    <img class="ico-img" src="./img/zalo.svg" alt="Zalo">
+  </a>
+  <a class="fab-btn call" href="tel:0934123036" aria-label="Gọi điện">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+</div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Product Detail Modal -->
+  <div id="detailModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Đóng">✕</button>
+      <div class="modal-grid">
+        <div class="modal-image">
+          <img id="detailImg" alt="Ảnh sản phẩm"/>
+        </div>
+        <div class="modal-info">
+          <nav class="breadcrumb" id="detailBreadcrumb"></nav>
+          <h2 id="detailName"></h2>
+          <div class="detail-price">
+            <span id="detailOld" class="old"></span>
+            <span id="detailCur" class="cur"></span>
+          </div>
+          <div class="promo">
+            <h4>Khuyến mãi HOT</h4>
+            <ul>
+              <li>Giao hoa tươi tận nơi nội thành (bán kính 12km)</li>
+              <li>Giảm 20k cho khách mới đặt online – MÃ: <b>KHACHMOI</b></li>
+              <li>Giảm 50k đơn hàng &gt; 1.7tr – MÃ: <b>NGUYETHY50</b></li>
+              <li>Giảm 30k khi đặt trước 2 ngày (đơn &gt; 600k)</li>
+              <li>Nhận hoa tại shop: 77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú</li>
+            </ul>
+          </div>
+          <div class="qty">
+            <button id="minus">-</button>
+            <input id="qty" type="number" value="1" min="1"/>
+            <button id="plus">+</button>
+          </div>
+
+          <div style="display: flex;">
+          <button id="addToCart" class="btn add">THÊM VÀO GIỎ HÀNG</button>
+<a id="viewDetailLink" class="btn outline" href="#" style="margin-left:8px;text-decoration:none;">Xem chi tiết</a>
+          </div>
+          <aside class="policy">
+            <h4>Hỗ trợ & Cam kết</h4>
+            <ul>
+              <li>Giao nhanh: Freeship nội thành theo chính sách</li>
+              <li>Bảo mật: Thông tin khách luôn được giữ kín</li>
+              <li>Thanh toán: Tiền mặt, chuyển khoản, ví điện tử</li>
+              <li>Hỗ trợ: Zalo, Facebook, gọi trực tiếp</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="cart-drawer">
+    <div class="cart-head">
+      <h3>Giỏ hàng</h3>
+      <button id="cartClose" aria-label="Đóng">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total">
+      <div>Tạm tính: <span id="subtotal">0₫</span></div>
+      <button class="btn checkout">Thanh toán</button>
+    </div>
+  </aside>
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+
+
+
+
+  <script src="app-core.js"></script> 
+   <script src="script.js">
+  </script>
+</body>
+
+
+</html>

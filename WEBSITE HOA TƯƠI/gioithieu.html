@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Giới thiệu | Hoa Tươi Sài Gòn</title>
+  <meta name="description" content="Giới thiệu Hoa Tươi Sài Gòn – Ảnh thật, giao nhanh trong 2 giờ, tư vấn tận tâm.">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/128/449/449350.png" type="image/png" sizes="32x32">
+  <!-- ======= Tăng vẻ hoa mỹ chỉ riêng trang này (không phá style cũ) ======= -->
+  <style>
+    :root{
+      --brand:#2b8a5e;    /* xanh lá dịu */
+      --ink:#1e293b;
+      --sub:#64748b;
+      --soft:#f6fbf7;
+      --ring:#e8f4ec;
+    }
+    /* Hero ảnh nền */
+    .about-hero{
+      position:relative; isolation:isolate; min-height:280px;
+      display:grid; place-items:center; text-align:center; color:#fff;
+      background:#000;
+    }
+    .about-hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:url("https://www.360flowers.net/uploads/file/nhan-vien-shop-hoa-20.jpg") center/cover no-repeat;
+      filter:brightness(.55);
+      z-index:-2;
+    }
+    .about-hero::after{
+      content:""; position:absolute; inset:0; z-index:-1;
+      background:linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.45));
+    }
+    .about-hero h1{
+      font-family:"Playfair Display",serif; font-weight:700; font-size:36px; letter-spacing:.2px; margin:0 0 6px;
+    }
+    .about-hero p{
+      margin:0; font-size:16px; opacity:.95;
+    }
+
+    /* Khối nội dung chính */
+    .about-wrap{ background:var(--soft); padding:28px 0 40px; }
+    .about-grid{ display:grid; grid-template-columns: 1.2fr .9fr; gap:28px; }
+    @media (max-width: 980px){ .about-grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background:#fff; border:1px solid #e7e7e7; border-radius:16px; padding:22px;
+      box-shadow:0 10px 26px rgba(0,0,0,.05);
+    }
+    .lead{ font-size:18px; line-height:1.8; color:var(--ink); margin-top:0 }
+    .about h2{
+      font-size:22px; margin:20px 0 10px; color:#0f172a;
+    }
+    .about p, .about li{ color:var(--ink); line-height:1.8 }
+    .about ul{ padding-left:18px; margin:10px 0 }
+
+    /* Chỉ số nổi bật */
+    .stats{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0 6px;
+    }
+    .stat{
+      background:var(--ring); border:1px solid #dff1e6; border-radius:14px; padding:14px; text-align:center;
+    }
+    .stat b{ font-size:22px; color:var(--brand); display:block }
+    .stat span{ color:var(--sub); font-size:13px }
+
+    /* Gallery bên phải */
+    .gallery{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .photo{
+      overflow:hidden; border-radius:14px; aspect-ratio:1/1; position:relative; border:1px solid #eee;
+    }
+    .photo img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+    .photo:hover img{ transform:scale(1.06) }
+    .photo.tag::after{
+      content:"Studio"; position:absolute; left:10px; top:10px; font-size:12px;
+      background:#ffffffd9; color:#0f172a; border:1px solid #e7e7e7; padding:2px 8px; border-radius:999px;
+    }
+
+    /* Dải “giá trị cốt lõi” */
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      background:#fff; border:1px dashed #e3efe7; color:#0f172a; border-radius:999px; padding:8px 12px; margin:6px 8px 0 0;
+    }
+    .pill i{ color:var(--brand) }
+
+    /* Nút hành động nhẹ */
+    .cta-line{
+      margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn-soft{
+      border:1px solid #e7e7e7; background:#fff; border-radius:12px; padding:10px 14px; cursor:pointer;
+    }
+    .btn-soft:hover{ background:#f8fafc }
+  </style>
+</head>
+<body>
+
+  <!-- ========== Header + Nav: GIỮ NGUYÊN từ trang chủ của bạn ========== -->
+  <header class="topbar">
+    <div class="container flex between center">
+      <a class="brand" href="/trangchu.html">
+        <span class="brand-icon"><img src="https://cdn-icons-png.flaticon.com/128/449/449350.png" height="30" width="30" alt=""></span>
+        <span class="brand-name">Hoa Tươi Sài Gòn</span>
+      </a>
+      <div class="search-wrap">
+        <input id="searchInput" class="search" placeholder="Tìm sản phẩm..."/>
+        <button class="btnx icon-btn" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <span class="time">🕒 07:00 - 22:00</span>
+      </div>
+      <nav class="socials">
+        <a aria-label="Facebook" href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a aria-label="Messenger" href="#"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a aria-label="TikTok" href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a aria-label="Pinterest" href="#"><i class="fa-brands fa-pinterest"></i></a>
+        <a aria-label="YouTube" href="#"><i class="fa-brands fa-youtube"></i></a>
+      </nav>
+      <button class="icon-btn cart-btn" aria-label="Giỏ hàng">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+      <a href="./dangnhap.html" class="btn btn-brand btn-login" style="text-decoration: none; height: 40px">
+        <i class="fa-regular fa-user" style="margin-right:5px;"></i><span>Đăng nhập</span>
+      </a>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="./trangchu.html">Trang chủ</a></li>
+        <li><a class="active" href="./gioithieu.html">Giới thiệu</a></li>
+        <li><a href="./trangchu.html#sinhnhat">Hoa sinh nhật</a></li>
+        <li><a href="./trangchu.html#khaitruong">Hoa khai trương</a></li>
+        <li><a href="./trangchu.html#totnghiep">Hoa tốt nghiệp</a></li>
+        <li><a href="./trangchu.html#giohoa">Giỏ hoa</a></li>
+        <li><a href="./trangchu.html#gaubong">Hoa gấu bông</a></li>
+        <li><a href="./trangchu.html#hopmica">Hộp hoa mica</a></li>
+        <li><a href="./lienhe.html">Liên hệ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== Hero ẢNH ========== -->
+  <section class="about-hero">
+    <div class="container">
+      <h1>Giới thiệu Hoa Tươi Sài Gòn</h1>
+      <p>Ảnh thật – Giao nhanh trong 2 giờ – Tư vấn tận tâm</p>
+    </div>
+  </section>
+
+  <!-- ========== Nội dung chính ========== -->
+  <section class="about-wrap">
+    <div class="container about">
+      <div class="about-grid">
+
+        <!-- CỘT TRÁI: text -->
+        <article class="card">
+          <p class="lead">
+            Hoa Tươi Sài Gòn là điểm đến của những câu chuyện trao gửi yêu thương. 
+            Chúng tôi theo đuổi phong cách cắm hoa tinh tế, hiện đại và tôn trọng chất cảm tự nhiên của từng bông hoa.
+          </p>
+
+          <div class="stats">
+            <div class="stat"><b>10.000+</b><span>đơn giao thành công</span></div>
+            <div class="stat"><b>4.9/5</b><span>đánh giá hài lòng</span></div>
+            <div class="stat"><b>&lt; 2 giờ</b><span>thời gian giao nội thành</span></div>
+          </div>
+
+          <h2>Lịch sử hình thành & phát triển</h2>
+          <p>
+            Từ những ngày đầu chỉ là một góc nhỏ ngập tràn sắc hoa giữa lòng Sài Gòn, chúng tôi khởi đầu với niềm tin giản dị: mỗi bông hoa đều mang trong mình một câu chuyện và một cảm xúc riêng. Trải qua hành trình nhiều năm, từ một cửa hàng nhỏ chuyên cung cấp hoa tươi cho khu vực trung tâm, chúng tôi từng bước mở rộng quy mô, xây dựng hệ thống cung ứng – thiết kế – giao hoa chuyên nghiệp với đội ngũ nghệ nhân cắm hoa lành nghề. Mỗi bó hoa ra đời đều được chăm chút tỉ mỉ từ khâu chọn hoa, phối màu, đến cách gói và gửi đi.
+          </p>
+
+          <h2>Cam kết dịch vụ</h2>
+          <ul>
+            <li>Ảnh thật 100% — chụp xác nhận trước khi giao</li>
+            <li>Miễn phí thiệp chúc & gói quà tinh tế</li>
+            <li>Hỗ trợ tư vấn mix màu, chọn mẫu theo ngân sách</li>
+          </ul>
+
+          <h2>Danh mục nổi bật</h2>
+          <div>
+            <span class="pill"><i class="fa-regular fa-star"></i> Hoa sinh nhật</span>
+            <span class="pill"><i class="fa-solid fa-store"></i> Hoa khai trương</span>
+            <span class="pill"><i class="fa-solid fa-graduation-cap"></i> Hoa tốt nghiệp</span>
+            <span class="pill"><i class="fa-solid fa-basket-shopping"></i> Giỏ hoa</span>
+            <span class="pill"><i class="fa-regular fa-gem"></i> Hộp hoa mica</span>
+          </div>
+
+          <div class="cta-line">
+            <a class="btn-soft" href="./trangchu.html">Khám phá sản phẩm</a>
+            <a class="btn-soft" href="./lienhe.html">Liên hệ tư vấn nhanh</a>
+          </div>
+        </article>
+
+        <!-- CỘT PHẢI: gallery ảnh -->
+        <aside class="card">
+          <div style="margin-bottom:10px">
+            <strong>Góc studio & khoảnh khắc giao hoa</strong>
+            <p style="color:var(--sub);margin:6px 0 0">Một vài hình ảnh minh hoạ phong cách phối màu & đóng gói.</p>
+          </div>
+          <div class="gallery">
+            <figure class="photo tag">
+              <img src="https://hoasapthom.com/wp-content/uploads/2023/05/Hoa-To%CC%82%CC%81t-nghie%CC%A3%CC%82p-11.jpg" alt="Bó hoa phối hồng pastel">
+            </figure>
+            <figure class="photo">
+              <img src="https://hoa18.com/wp-content/uploads/2021/11/485c03beceb434837643a33dbcadafba-5bb2ecaef3604-600x800.jpg?gidzl=Jok8HK5IL4X0Cu15JqnKHaOrYKrHIGX72p_TIWKI2KG8QjyO1qS25WXirXy35W4KN3tG6JSvJ-KwH5nUIW" alt="Bó tulip tone ấm">
+            </figure>
+            <figure class="photo">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ41XOd5D4qyFxiVFy70aDr3xbQcTAd9rTsi56RGNW0EKX5c-5k-ARtHCE&s=10" alt="Gói giấy mỹ thuật sang trọng">
+            </figure>
+            <figure class="photo">
+              <img src="https://hoavily.com/uploads/file/hoa-xin-loi-tphcm.jpg?gidzl=fY85IXUAU7wfEWrA6PHuSAyz3aC7a2vmuZTQH5FBBtFXObWMKPua8U5aKH5LpoSZjJLN5pU6daG34eHoV0" alt="Giao hoa tận nơi">
+            </figure>
+            <figure class="photo">
+              <img src="https://hoatuoi360.vn/uploads/file/Baiviet2024/Hoatuoi360-shop-hoa-tuoi-phuong-tan-son-nhi-uy-tin.jpg?gidzl=VgWz8NEv8rvni3KXVQSZK7UtDozZetHNEhrZA3VuTLGvw65wDQr-1ZdkQ7qn_7q4RRzkUpSw9oT8ThSfN0" alt="Giao hoa tận nơi">
+            </figure>
+            
+            <figure class="photo">
+              <img src="https://cafefcdn.com/203337114487263232/2023/3/7/photo-16-167817473294338436841.jpg" alt="Giao hoa tận nơi">
+            </figure>
+            <figure class="photo">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfNv8tN15fBil-5qGpnoxmojyF_j3OaLFl1LAhcJO41krGHST-uoNibY8&s=10" alt="Giao hoa tận nơi">
+            </figure>
+            
+            <figure class="photo">
+              <img src="https://hoatuoigovap.com.vn/upload/sanpham/9be4d36a-1aae-484f-80f2-06d924dbaa30-1540.jpeg" alt="Giao hoa tận nơi">
+            </figure>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Action Buttons -->
+<div class="fab-stack" role="complementary" aria-label="Liên hệ nhanh">
+  <a class="fab-btn zalo" href="https://zalo.me/g/nuepdm346" target="_blank" rel="noopener" aria-label="Chat Zalo">
+    <img class="ico-img" src="./img/zalo.svg" alt="Zalo">
+  </a>
+  <a class="fab-btn call" href="tel:0934123036" aria-label="Gọi điện">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+</div>
+
+
+  <!-- ========== Footer: GIỮ NGUYÊN ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Hoa tươi Sài Gòn</h4>
+          <p>77 Tân Thạnh, P. Phú Thạnh, Q. Tân Phú, TP.HCM</p>
+          <p>Hotline: <a href="tel:0934123036">0934 123 036</a></p>
+          <p>Email: hoatuoisaigon@htsg.vn</p>
+        </div>
+        <div>
+          <h4>Chính sách</h4>
+          <ul>
+            <li><a href="#">Giao hàng</a></li>
+            <li><a href="#">Đổi trả</a></li>
+            <li><a href="#">Thanh toán</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Đăng ký nhận ưu đãi</h4>
+          <form class="subscribe" onsubmit="event.preventDefault();toast('Đã đăng ký thành công!')">
+            <input placeholder="Email của bạn"/>
+            <button class="btn">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Hoa tươi Sài Gòn. Ảnh minh hoạ.</p>
+    </div>
+  </footer>
+
+  <!-- Toast (tận dụng nếu đã có trong style.css) -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // Nếu bạn đã có logic cập nhật badge giỏ hàng trong script.js,
+    // có thể import thêm ở đây. Ví dụ:
+    // < src="script.js"><
+    function toast(msg){
+      const el=document.getElementById('toast'); if(!el) return alert(msg);
+      el.textContent=msg; el.className='toast show'; setTimeout(()=>el.className='toast',1800);
+    }
+
+      // Đăng nhập
+
+
+const AUTH_KEY = 'hcm-auth';
+
+function getAuth() {
+  const raw = localStorage.getItem(AUTH_KEY);
+  if (!raw) return null;
+  try {
+    const obj = JSON.parse(raw);
+    if (obj.exp && Date.now() > obj.exp) {
+      clearAuth();
+      return null;
+    }
+    return obj;
+  } catch {
+    return null;
+  }
+}
+function clearAuth() {
+  localStorage.removeItem(AUTH_KEY);
+}
+
+// Thay nút "Đăng nhập" -> menu user nếu đã đăng nhập
+(function hydrateHeader() {
+  const auth = getAuth();
+  const loginBtn = document.querySelector('.btn-login');
+
+  if (!loginBtn) return;
+
+  if (auth) {
+    // Lấy chữ cái đầu làm avatar
+    const initials = (auth.name || 'KH').trim().split(/\s+/).map(p => p[0]).slice(-2).join('').toUpperCase();
+
+    const wrap = document.createElement('div');
+    wrap.className = 'user-menu';
+    wrap.innerHTML = `
+    <button class="user-btn" id="userMenuBtn" type="button" aria-haspopup="true" aria-expanded="false">
+      <span class="user-avatar">${initials}</span>
+      <span class="user-name">${auth.name}</span>
+      <i class="fa-solid fa-caret-down user-caret" aria-hidden="true"></i>
+    </button>
+
+    <div class="user-dropdown" id="userDropdown" role="menu" aria-label="Tài khoản">
+      <a href="/qldonhang.html" class="user-item">Đơn hàng của tôi</a>
+      <a href="/taikhoan.html" class="user-item">Tài khoản</a>
+      <hr class="user-divider">
+      <button id="logoutBtn" class="user-logout" type="button">Đăng xuất</button>
+    </div>
+  `;
+    loginBtn.replaceWith(wrap);
+
+    const btn = wrap.querySelector('#userMenuBtn');
+    const dd = wrap.querySelector('#userDropdown');
+    const logoutBtn = wrap.querySelector('#logoutBtn');
+
+    // Toggle dropdown (click)
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Đóng khi click ra ngoài / nhấn Esc
+    document.addEventListener('click', (e) => {
+      if (!wrap.contains(e.target)) {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', () => {
+      clearAuth();
+      location.reload();
+    });
+  } else {
+    // Ví dụ: bắt đăng nhập trước khi thanh toán
+    const checkoutBtn = document.querySelector('.btn.checkout');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', () => {
+        const a = getAuth();
+        if (!a) {
+          const next = encodeURIComponent(location.pathname);
+          window.location.href = `/dangnhap.html?next=${next}`;
+        } else {
+          window.location.href = '/thanhtoan.html';
+        }
+      });
+    }
+  }
+
+})();
+  </script>
+
+  <script src="./script.js"></script>
+</body>
+</html>
